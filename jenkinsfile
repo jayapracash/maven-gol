@@ -13,23 +13,30 @@ pipeline {
     registryCredential = 'cred-id-docker'
   }
 
-  agent any   //for specific slave use agent { label 'dumb-slave-name' }
+  agent { label 'dumb-slave-name' }
 
 //  tools { nodejs "node" }  //install nodejs plugin ,go to global tool configuration and give name for nodejs as node, check install automatically
 
   stages {
     stage('Cloning Git') {
       steps {
-        git 'jayapracash/maven-gol'
+        git 'https://github.com/jayapracash/maven-gol.git'
       }
     }
     stage ('Build MavenApp'){
-       steps{sh 'mvn install'
+    
+       steps{
+           sh 'pwd'
+           sh 'mvn install'
        }
     }
     stage('Test mavneapp'){
       steps{
-        sh 'mvn jetty:run'
+        dir ('gameoflife-web') {
+        sh 'pwd'
+        sh 'mvn jetty:run >/dev/null 2>&1 &'
+
+      }
       }
     }
     stage('Building image') {
