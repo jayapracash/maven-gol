@@ -7,12 +7,15 @@ Ref: https://jenkins.io/doc/book/pipeline/syntax/
 https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4 
 */
 pipeline {
+   options {
+    buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+  }
 
   environment {
     registry = "bandarijp/jenkins-test"
     registryCredential = 'cred-id-docker'
   }
-
+  //agent any
   agent { label 'dumb-slave-name' }
 
 //  tools { nodejs "node" }  //install nodejs plugin ,go to global tool configuration and give name for nodejs as node, check install automatically
@@ -38,6 +41,11 @@ pipeline {
 
       }
       }
+    }
+    stage('archieving buildedapp'){
+    steps{
+    archiveArtifacts 'gameoflife.war'
+    }
     }
     stage('Building image') {
       steps{
