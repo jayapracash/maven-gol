@@ -76,10 +76,11 @@ pipeline {
    stage(‘Docker Purge’) {
 
 steps {
+ sh 'echo done building image'
 
-sh ‘docker image prune -fa’
+//sh 'docker image prune -fa'
 
-deleteDir()
+//deleteDir()
 
 }
 
