@@ -73,7 +73,7 @@ pipeline {
 /* this
    is a
    multi-line comment, this deletes the docker complete data
-   stage(‘Docker Purge’) {
+   stage(‘Dev Stage’) {
 
 steps {
  sh 'echo done building image'
