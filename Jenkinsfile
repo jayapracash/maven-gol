@@ -23,7 +23,7 @@ pipeline {
   stages {
     stage('printing ENV variables ') {
       steps {
-        sh 'env > env.txt' 
+        sh 'env > env.txt'} 
         for (String i : readFile('env.txt').split("\r?\n")) {
            println i
          }
@@ -31,7 +31,7 @@ pipeline {
 
       }
     }
-    }
+    
 /* this
    is a
    multi-line comment, this deletes the docker complete data
