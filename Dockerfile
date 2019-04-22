@@ -39,6 +39,7 @@ COPY ./context.xml.host-manager /opt/tomcat/apache-tomcat-9.0.19/webapps/host-ma
 
 COPY ./tomcat-users.xml /opt/tomcat/apache-tomcat-9.0.19/conf/tomcat-users.xml
 COPY ./tomcat-alpine-service /etc/init.d/tomcat
+COPY ./gameoflife-web/target/gameoflife.war /opt/tomcat/apache-tomcat-9.0.19/webapps/gameoflife.war
 RUN chmod 755 /etc/init.d/tomcat
 RUN mkdir /run/openrc/
 RUN cat dev/null > /run/openrc/softlevel
