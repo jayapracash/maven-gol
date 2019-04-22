@@ -55,12 +55,11 @@ pipeline {
       }
     }
     stage('Checking artifact in image'){
-      docker.image(dockerImage){
-        stage('Tomcatendpoint') {
+      docker.image(dockerImage).inside{
                 sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null' //or  curl localhost:5000/gameoflife/
     }
   }
-}
+
 
     stage('Deploy Image') {
       steps{
