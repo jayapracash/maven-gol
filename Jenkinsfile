@@ -21,55 +21,17 @@ pipeline {
 //  tools { nodejs "node" }  //install nodejs plugin ,go to global tool configuration and give name for nodejs as node, check install automatically
 
   stages {
-    stage('Cloning Git') {
+    stage('printing ENV variables ') {
       steps {
-        git 'https://github.com/jayapracash/maven-gol.git'
-      }
-    }
-    stage ('Build MavenApp'){
-    
-       steps{
-           sh 'pwd'
-           sh 'mvn install'
-       }
-    }
-    stage('Test mavneapp'){
-      steps{
-        dir ('gameoflife-web') {
-        sh 'pwd'
-        sh 'mvn jetty:run >/dev/null 2>&1 &'
-        sh 'ls'
-      }
-      }
-    }
-    stage('archieving buildedapp'){
-    steps{
-    archiveArtifacts 'gameoflife-web/target/gameoflife.war'
-    }
-    }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
+        sh 'env > env.txt' 
+for (String i : readFile('env.txt').split("\r?\n")) {
+    println i
+}
 
-        script {
-          docker.withRegistry( '', registryCredential ) {
-           dockerImage.push()
-        }
+
       }
-      }
-    
     }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-        }
-      }
+    }
 /* this
    is a
    multi-line comment, this deletes the docker complete data
