@@ -54,17 +54,6 @@ pipeline {
         }
       }
     }
-      pipeline{
-        agent { docker { image dockerImage } }
-          stages {
-            stage ('artifact test'){
-steps{
-         sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null' //or  curl localhost:5000/gameoflife/
-    }
-  
-}
-}
-}
 
 
     stage('Deploy Image') {
