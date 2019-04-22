@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+RC_SVCNAME=tomcat  
+name=$RC_SVCNAME
+command="/opt/tomcat/apache-tomcat-9.0.19/bin/catalina.sh "
+command_user="root"
+start_stop_daemon_args="--args-for-start-stop-daemon"
+command_background="yes"
+
+
+start() {
+    ebegin "Starting tomcat"
+    start-stop-daemon --start \
+        --exec /opt/tomcat/apache-tomcat-9.0.19/bin/catalina.sh start\
+    eend $?
+}
+
