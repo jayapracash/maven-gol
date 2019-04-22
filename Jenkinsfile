@@ -54,6 +54,18 @@ pipeline {
         }
       }
     }
+    stage('Checking artifact in image'){
+      agent {
+        docker { image dockerImage }
+    }
+    stages {
+        stage('Tomcatendpoint') {
+            steps {
+                sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null' //or  curl localhost:5000/gameoflife/
+    }
+  }
+}
+}
     stage('Deploy Image') {
       steps{
 
