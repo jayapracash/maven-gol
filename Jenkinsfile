@@ -54,7 +54,6 @@ pipeline {
         }
       }
     }
-    stage('Checking artifact in image'){
       pipeline{
         agent { docker { image dockerImage } }
           stages {
@@ -62,7 +61,7 @@ pipeline {
 steps{
          sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null' //or  curl localhost:5000/gameoflife/
     }
-  }
+  
 }
 }
 }
