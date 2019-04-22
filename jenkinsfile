@@ -44,7 +44,7 @@ pipeline {
     }
     stage('archieving buildedapp'){
     steps{
-    archiveArtifacts 'gameoflife.war'
+    archiveArtifacts 'gameoflife-web/target/gameoflife.war'
     }
     }
     stage('Building image') {
