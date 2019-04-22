@@ -24,9 +24,9 @@ pipeline {
     stage('printing ENV variables ') {
       steps {
         sh 'env > env.txt' 
-for (String i : readFile('env.txt').split("\r?\n")) {
-    println i
-}
+        for (String i : readFile('env.txt').split("\r?\n")) {
+           println i
+         }
 
 
       }
