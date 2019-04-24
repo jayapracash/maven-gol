@@ -1,5 +1,5 @@
 pipeline{
-agent {"dumb-slave-name"}
+agent {label "dumb-slave-name"}
 	stages{
 		stage("jobstarted"){
 
