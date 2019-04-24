@@ -1,11 +1,4 @@
-/*
-we can use the groovy pipeline script directly in jenkins job in pipeline script or from git using pipeline script from git
-for this create git credentials in jenkins
-and give the pipeline script name for script path in job
-pipeline syntax & declarative syntax
-Ref: https://jenkins.io/doc/book/pipeline/syntax/
-https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4 
-*/
+
 pipeline {
    options {
     buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
@@ -67,28 +60,19 @@ pipeline {
       }
     
     }
+    
+  }
+  agent { label 'dumb-slave-name' }
+    stage("docker login"){
+      println "dockerImage"
+      docker.image("dockerImage").inside{
+        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}
+    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
         }
       }
-/* this
-   is a
-   multi-line comment, this deletes the docker complete data
-   stage(‘Docker Purge’) {
-
-steps {
-
-sh ‘docker image prune -fa’
-
-deleteDir()
-
+    
 }
-
-}
-
-    */
-
-// this is a single line comment for jenkins pipeline which uses java and c form of comments
-  }
 }
