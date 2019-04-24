@@ -1,5 +1,11 @@
 node ("dumb-slave-name") {
-//    docker.image('cloudbees/java-build-tools:2.0.0').inside {
+	stage('Jobstarted'){
+
+
+	steps{
+		script{
+           stage('main'){
+           	//    docker.image('cloudbees/java-build-tools:2.0.0').inside {
 
         // verify that selenium-standalone-server has been started by the Dockerfile entrypoint /opt/bin/entry_point.sh
         sh "hostnamectl"
@@ -14,6 +20,11 @@ print("Hello world...!")
 """)
 
         sh "python remote_test.py"
+
+           }
+		}
+	}
+}
 
     }
 
