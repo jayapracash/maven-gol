@@ -15,7 +15,7 @@ pipeline {
 
   stages {
     stage('printing ENV variables ') {
-      steps {
+      script {          //use script to execute commands or groovy program dont use steps or stage
         sh 'env > env.txt' 
         for (String i : readFile('env.txt').split("\r?\n")) {
            println i
