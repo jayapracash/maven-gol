@@ -6,12 +6,12 @@ agent {label "dumb-slave-name"}
 
 	steps{
 		script{
-           stage('main'){
+           stage('creating python script'){
            	//    docker.image('cloudbees/java-build-tools:2.0.0').inside {
 
         // verify that selenium-standalone-server has been started by the Dockerfile entrypoint /opt/bin/entry_point.sh
         sh "hostnamectl"
-        
+        println "executing python script"
         // test with selenium python
         writeFile (
             file: 'remote_test.py', 
