@@ -15,6 +15,7 @@ pipeline {
 
   stages {
     stage("environment_setup"){
+      steps{
       script {    //use script to execute commands or groovy program dont use steps or stage
       stage('printing ENV variables ') {          
         sh 'env > env.txt' 
@@ -25,6 +26,7 @@ pipeline {
 
       }
     }
+  }
   }
     
   }
