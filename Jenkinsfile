@@ -1,3 +1,4 @@
+pipeline{
 node ("dumb-slave-name") {
 	stages{
 		stage("jobstarted"){
@@ -30,3 +31,4 @@ print("Hello world...!")
 
     }
 
+}
