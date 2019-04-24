@@ -1,5 +1,6 @@
 node ("dumb-slave-name") {
-	stage('Jobstarted'){
+	stages{
+		stage("jobstarted"){
 
 
 	steps{
@@ -24,6 +25,7 @@ print("Hello world...!")
            }
 		}
 	}
+}
 }
 
     }
