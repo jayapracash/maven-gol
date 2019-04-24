@@ -62,7 +62,6 @@ pipeline {
     }
     
   }
-  agent { label 'dumb-slave-name' }
     stage("docker login"){
       println "dockerImage"
       docker.image("dockerImage").inside{
