@@ -30,7 +30,14 @@ print("Hello world...!")
 }
 stage('calling master branch pipeline'){
 	steps{
-	build 'master'
+	build 'master'   //we are invoking pipeline named master
+	//Note: if both parent and child pipelines running in same slave then the slave need to configure with no of executors value more than 1 EX: 5
+/*
+If pipeline is parameterised then
+build job: 'myjob/master', parameters: [string(name: 'param1', value:'val1')], wait: false
+or
+ build job: 'pipeline1', parameters: [string(name: 'param1', value: "value1")]
+*/	
 }
 }
 }
