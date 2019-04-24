@@ -29,7 +29,9 @@ print("Hello world...!")
 	}
 }
 stage('calling master branch pipeline'){
+	steps{
 	build 'master'
+}
 }
 }
 
