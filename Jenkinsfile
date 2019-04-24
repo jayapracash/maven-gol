@@ -1,5 +1,5 @@
 pipeline{
-node ("dumb-slave-name") {
+agent ("dumb-slave-name") 
 	stages{
 		stage("jobstarted"){
 
@@ -31,4 +31,3 @@ print("Hello world...!")
 
     }
 
-}
