@@ -55,9 +55,9 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
            dockerImage.push()
-            println "dockerImage"
-      docker.image("dockerImage").inside{
-        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}
+            println "$registry:$BUILD_NUMBER"
+      docker.image("$registry:$BUILD_NUMBER").inside{
+        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}//sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null'
     }
         }
       }

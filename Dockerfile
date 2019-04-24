@@ -2,7 +2,7 @@ FROM alpine:latest
 ENV LANG C.UTF-8 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk/jre	
 RUN echo $JAVA_HOME
-RUN apk --update add sudo git wget
+RUN apk --update add sudo git wget curl
 #RUN sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config 
 #RUN sed -i s/#PasswordAuthentication.*/PasswordAuthentication\ yes/ /etc/ssh/sshd_config 
 #RUN sed -i s/#Port.*/Port\ 22/ /etc/ssh/sshd_config 
