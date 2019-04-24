@@ -57,7 +57,7 @@ pipeline {
            dockerImage.push()
             println "$registry:$BUILD_NUMBER"
       docker.image("$registry:$BUILD_NUMBER").inside{
-        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}//sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null'
+        stage("commandrun"){sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null'}//sh 'wget "http://localhost:9090/gameoflife/" -O /dev/null' or sh "curl localhost:9090/gameoflife/"
     }
         }
       }
