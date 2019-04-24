@@ -55,23 +55,23 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
            dockerImage.push()
+            println "dockerImage"
+      docker.image("dockerImage").inside{
+        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}
+    }
         }
       }
       }
     
     }
-    
-  }
-    stage("docker login"){
-      println "dockerImage"
-      docker.image("dockerImage").inside{
-        stage("commandrun"){sh "curl localhost:9090/gameoflife/"}
-    }
-    stage('Remove Unused docker image') {
+   stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
         }
       }
+     
+  }
     
-}
+     
+    
 }
