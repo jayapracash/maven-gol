@@ -14,7 +14,7 @@ pipeline {
 //  tools { nodejs "node" }  //install nodejs plugin ,go to global tool configuration and give name for nodejs as node, check install automatically
 
   stages {
-    
+    stage("environment_setup"){
       script {    //use script to execute commands or groovy program dont use steps or stage
       stage('printing ENV variables ') {          
         sh 'env > env.txt' 
@@ -25,6 +25,7 @@ pipeline {
 
       }
     }
+  }
     
   }
 }
